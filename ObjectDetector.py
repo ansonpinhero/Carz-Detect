@@ -36,7 +36,7 @@ class Detector:
 
         for i in range(detections.shape[2]):
             confidence = detections[0, 0, i, 2]
-            if confidence > 0.1:
+            if confidence > 0.4:
                 class_id = int(detections[0, 0, i, 1])
 
                 xLeftBottom = int(detections[0, 0, i, 3] * cols)
@@ -51,14 +51,15 @@ class Detector:
                     labelSize, baseLine = cv.getTextSize(label, cv.FONT_HERSHEY_SIMPLEX, 0.5, 1)
                     yLeftBottom = max(yLeftBottom, labelSize[1])
                     cv.putText(img, label, (xLeftBottom+5, yLeftBottom), cv.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255))
-                    checklist=["car","truck","bicycle","motorcycle","bus"]
-                    if (str(classNames[class_id]) in checklist):
-                        return "True"
-                    else:
-                        return "false"
+                   
+                    
                 else:
                     return "false"
-            else:
-                return "false"
-        
+           
+           
+        checklist=["car","truck","bicycle","motorcycle","bus"]        
+        if (str(classNames[class_id]) in checklist):
+            return "True"
+        else:
+            return "false"
         #return str(classNames[class_id]) + "with confidence " +str(confidence)
