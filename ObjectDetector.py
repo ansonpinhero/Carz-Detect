@@ -33,7 +33,8 @@ class Detector:
         detections = cvNet.forward()
         cols = img.shape[1]
         rows = img.shape[0]
-
+        print(detections.shape[2])
+        class_id=0
         for i in range(detections.shape[2]):
             confidence = detections[0, 0, i, 2]
             if confidence > 0.4:
