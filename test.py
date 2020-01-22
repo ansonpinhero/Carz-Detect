@@ -10,9 +10,9 @@ def start(path_img):
       r = s.post(url,files=files)
       print(r.text)
       if(r.text=="True"):
-	  printf("Vehicle Found")
+	  print("Vehicle Found")
       else:
-	  printf("No Vehicle Found")
+	  print("No Vehicle Found")
 
 start(path_img)
 
